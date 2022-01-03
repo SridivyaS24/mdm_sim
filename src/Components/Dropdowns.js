@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const DcuNumber = [
+const DCU = [
     {
         "value": "1",
         "label" : "1258"
