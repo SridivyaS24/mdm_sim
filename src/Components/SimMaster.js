@@ -1,28 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Stack, Button, CssBaseline, AppBar, Toolbar, Typography, Box, TextField, MenuItem } from '@mui/material';
+import { Radio, RadioGroup, FormControlLabel, FormControl, Stack, Button, CssBaseline, AppBar, Toolbar, Typography, Box, TextField, Grid } from '@mui/material';
 import Home from '@mui/icons-material/Home';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { DCU, dropdowns } from './Dropdowns';
 
 
-const dropdowns = [
-  {
-    value: '1',
-    label: 'GPRS-4G',
-  },
-  {
-    value: '2',
-    label: 'GPRS-3G',
-  },
-  {
-    value: '3',
-    label: 'EDGE',
-  },
-  {
-    value: '4',
-    label: 'SIM',
-  },
-];
 
 
 export default function SelectTextFields() {
@@ -36,7 +19,7 @@ export default function SelectTextFields() {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 2, width: '25ch' },
       }}
       noValidate
       autoComplete="off"
@@ -65,8 +48,6 @@ export default function SelectTextFields() {
           native: true,
         }} /
       >
-
-
 
       <TextField
         id="outlined-select-currency-native"
@@ -106,7 +87,8 @@ export default function SelectTextFields() {
         <TextField
           id="outlined-select-currency-native"
           select
-          required label=" Select Service Number DCU"
+          required
+          label=" Select Service Number DCU"
           value={currency}
           onChange={handleChange}
           SelectProps={{
@@ -114,10 +96,10 @@ export default function SelectTextFields() {
           }}
         >
 
-          {dropdowns.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
+          {DCU.map((option) => (
+            <option key={option.value} value={option.value}>
               {option.label}
-            </MenuItem>
+            </option>
           ))}
         </TextField>
 
@@ -128,33 +110,48 @@ export default function SelectTextFields() {
 
         </TextField>
       </div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">IP Type</FormLabel>
+      <Grid container direction="row" alignContent="Center" justifyContent="center" spacing={2}>
+        <Grid item xs={3} ></Grid>
+        <Grid item xs={3} >
+          <FormControl component="fieldset">
+            <Typography variant="h6" alignItems="center">IP Type</Typography>
 
-          <RadioGroup row aria-label="IP type" name="row-radio-buttons-group">
-            <FormControlLabel value="static" control={<Radio />} label="Static" />
-            <FormControlLabel value="dynamic" control={<Radio />} label="Dynamic" />
+            <RadioGroup row aria-label="IP type" name="row-radio-buttons-group">
+              <FormControlLabel value="static" control={<Radio />} label="Static" />
+              <FormControlLabel value="dynamic" control={<Radio />} label="Dynamic" />
+            </RadioGroup>
+          </FormControl></Grid>
+        <Grid item xs={3}>
+          <FormControl component="fieldset">
+            <Typography variant="h6" alignItems="center">Type of IP</Typography>
+            <RadioGroup row aria-label="Type of IP" name="row-radio-buttons-group">
+              <FormControlLabel value="IPV4" control={<Radio />} label="IPV4" />
+              <FormControlLabel value="IPV6" control={<Radio />} label="IPV6" />
 
-          </RadioGroup>
-        </FormControl></div>
-      <div>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Type of IP</FormLabel>
-          <RadioGroup row aria-label="Type of IP" name="row-radio-buttons-group">
-            <FormControlLabel value="IPV4" control={<Radio />} label="IPV4" />
-            <FormControlLabel value="IPV6" control={<Radio />} label="IPV6" />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={3}></Grid>
+      </Grid>
+      <Grid container direction="row" alignContent="Center" justifyContent="center" spacing={2}>
+        <Grid item xs={3} ></Grid>
+        <Grid item xs={4} >
+          <FormControl component="fieldset">
+            <Typography variant="h6" align="left">IP Address</Typography>
+            <Grid item xs={4}>
+              <TextField
+                id="outlined-select-currency-native"
+                native="outlined"
+                required label="IP Address"
+              > </TextField></Grid>
+          </FormControl></Grid>
+        <Grid item xs={4}></Grid>
+      </Grid>
 
-          </RadioGroup>
-        </FormControl></div>
-      <FormControl component="fieldset">
-        <FormLabel component="legend">IP Address</FormLabel></FormControl>
 
-      <Stack paddingRight={30} spacing={2} direction="row" justifyContent="center">
-
+      <Stack spacing={2} direction="row" justifyContent="center">
         <Button variant="contained" color="success">SUBMIT </Button>
         <Button variant="contained">CLEAR</Button>
-
       </Stack>
     </Box>
   );
