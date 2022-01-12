@@ -1,12 +1,14 @@
-import SelectTextFields from './Components/SimMaster'
+import SimMaster from './Components/SimMaster'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <SelectTextFields/>
+      <SimMaster />
     </div>
   );
 }
 
 export default App;
+
+

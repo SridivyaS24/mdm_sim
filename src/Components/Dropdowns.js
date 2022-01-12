@@ -1,6 +1,4 @@
-
-
-export const dropdowns = [
+export const simTypes = [
     {
       value: '1',
       label: 'GPRS-4G',
@@ -20,8 +18,7 @@ export const dropdowns = [
   ];
   
 
-
-export const DCU = [
+  export const DCU = [
     {
         "value": "1",
         "label" : "1258"
@@ -147,3 +144,5 @@ export const DCU = [
         "label": "TESTDCU20"
     },
 ];
+
+
